@@ -14,6 +14,10 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  created() {
+    console.log("created!");
+    this.$router.push({name: "login"});
   }
 }
 </script>
