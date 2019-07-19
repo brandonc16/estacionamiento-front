@@ -24,6 +24,7 @@
           <v-spacer></v-spacer>
 
           <v-btn flat class="info mx-0 mt-3" @click="submit" :loading="loading">Guardar</v-btn>
+          
         </v-form>
       </v-card-text>
     </v-card>

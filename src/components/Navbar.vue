@@ -6,11 +6,14 @@
       <v-btn flat color="white" @click="snackbar = false">Close</v-btn>
     </v-snackbar>
 
-    <v-toolbar flat dark app color="primary">
+    <v-toolbar flat dark app color="primary" clipped-left>
       <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       
       <v-toolbar-title class="text-uppercase">
-        <span class="font-weight-light">Parken</span>
+        <router-link :to="{name: 'dashboard'}">
+          <img class="logo" alt="Parken" src="../assets/logo_white.png"> 
+        </router-link>
+             
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -64,22 +67,29 @@
 </template>
 
 <script>
-// import Popup from './Popup'
+import Login from '@/views/Login'
 
 export default {
-  // components: { Popup },
+  components: {  },
+  
   data() {
     return {
       drawer: false,
       links: [
+        { icon: 'vpn_key', text: 'Iniciar Sesión', route: '/login' },
         { icon: 'dashboard', text: 'Inicio', route: '/' },
         { icon: 'directions_car', text: 'Estacionamientos', route: '/parkings' },
         { icon: 'attach_money', text: 'Ventas', route: '/sales' },
-        { icon: 'person', text: 'Usuarios', route: '/users' },
-        
+        { icon: 'person', text: 'Usuarios', route: '/users' }
       ],
-      snackbar: false
+      snackbar: false,
+      auth: Login.auth
     }
   }
 }
 </script>
+
+<style>
+.logo { max-height: 40px;}
+</style>
+
