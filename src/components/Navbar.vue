@@ -6,20 +6,19 @@
       <v-btn flat color="white" @click="snackbar = false">Close</v-btn>
     </v-snackbar>
 
-    <v-toolbar flat app>
-      <v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
+    <v-toolbar flat dark app color="primary">
+      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
       
-      <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Todo</span>
-        <span>Ninja</span>
+      <v-toolbar-title class="text-uppercase">
+        <span class="font-weight-light">Parken</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
       <v-menu offset-y>
-        <v-btn flat slot="activator" color="grey">
+        <v-btn flat slot="activator">
           <v-icon left>expand_more</v-icon>
-          <span>Menu</span>
+          <span>Menú</span>
         </v-btn>
         <v-list>
           <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
@@ -30,25 +29,24 @@
         </v-list>
       </v-menu>
 
-      <v-btn flat color="grey">
-        <span>Sign Out</span>
+      <v-btn flat>
+        <span>Cerrar Sesión</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
     </v-toolbar>
-
-    <v-navigation-drawer v-model="drawer" app class="primary">
+    
+    <!-- <v-navigation-drawer clipped fixed open fixed v-model="drawer" app dark>  -->
+    <v-navigation-drawer clipped fixed open app dark v-model="drawer">
       <v-layout column align-center>
-        <v-flex class="mt-5">
-          <v-avatar size="100">
+        <v-flex class="mt-4">
+          <v-avatar size="80">
             <img src="/avatar-1.png" alt="">
           </v-avatar>
           <p class="white--text subheading mt-1">
-            The Net Ninja
+            Usuario
           </p>
         </v-flex>
-        <v-flex class="mt-4 mb-3">
-          <Popup @projectAdded="snackbar = true" />
-        </v-flex>
+        
       </v-layout>
       <v-list>
         <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
@@ -61,22 +59,24 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-
+    
   </nav>
 </template>
 
 <script>
-import Popup from './Popup'
+// import Popup from './Popup'
 
 export default {
-  components: { Popup },
+  // components: { Popup },
   data() {
     return {
       drawer: false,
       links: [
-        { icon: 'dashboard', text: 'Dashboard', route: '/' },
-        { icon: 'folder', text: 'My Projects', route: '/projects' },
-        { icon: 'person', text: 'Team', route: '/team' },
+        { icon: 'dashboard', text: 'Inicio', route: '/' },
+        { icon: 'directions_car', text: 'Estacionamientos', route: '/parkings' },
+        { icon: 'attach_money', text: 'Ventas', route: '/sales' },
+        { icon: 'person', text: 'Usuarios', route: '/users' },
+        
       ],
       snackbar: false
     }
