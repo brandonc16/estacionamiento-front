@@ -52,11 +52,8 @@ export default {
   methods: {
     login(){
       if(this.userName && this.password) {        
-        console.log("los campos fueron llenados!")
-        
         this.users.forEach((user) => {
           if(((this.userName == user.email) || (this.userName == user.userName)) && (this.password == user.password)){
-            console.log("userName y password correctos!")
             this.auth = "true"
           }
         })         
