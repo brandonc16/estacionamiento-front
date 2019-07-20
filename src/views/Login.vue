@@ -15,7 +15,7 @@
               <p class="text-xs-center">Por favor introduzca su nombre de usuario y&nbsp;contraseña.</p>
               <v-form>
                 <v-text-field prepend-icon="person" v-model="userName" label="Nombre de Usuario"></v-text-field>
-                <v-text-field prepend-icon="lock" v-model="password" label="Contraseña"></v-text-field>
+                <v-text-field prepend-icon="lock" v-model="password" label="Contraseña" type="password"></v-text-field>
               </v-form>
               <p class="text-xs-center red--text" v-if="feedback">{{ feedback }}</p>
             </v-card-text>

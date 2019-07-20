@@ -45,9 +45,11 @@
           <v-avatar size="80">
             <img src="/avatar-1.png" alt="">
           </v-avatar>
-          <p class="white--text subheading mt-1">
-            Usuario
+          <p class="white--text subheading mt-1 text-xs-center">
+            admin<br/>
+            <span class="grey--text lighten-1 caption">Diego Osuna</span>
           </p>
+          
         </v-flex>
         
       </v-layout>
@@ -79,7 +81,7 @@ export default {
         { icon: 'vpn_key', text: 'Iniciar Sesión', route: '/login' },
         { icon: 'dashboard', text: 'Inicio', route: '/' },
         { icon: 'directions_car', text: 'Estacionamientos', route: '/parkings' },
-        { icon: 'attach_money', text: 'Ventas', route: '/sales' },
+        //{ icon: 'attach_money', text: 'Ventas', route: '/sales' },
         { icon: 'person', text: 'Usuarios', route: '/users' }
       ],
       snackbar: false,

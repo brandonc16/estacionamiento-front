@@ -202,6 +202,7 @@
   th {
     color: #fff !important;
     background-color: #FF9800;
+    font-size: 1.2em !important;
   }
 
   th i{
