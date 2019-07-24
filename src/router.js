@@ -10,29 +10,41 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/parkings',
       name: 'parkings',
-      component: Parkings
+      component: Parkings,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/sales',
       name: 'sales',
-      component: Sales
+      component: Sales,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/users',
       name: 'users',
-      component: Users
+      component: Users,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/login',
@@ -41,3 +53,38 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  
+  // check to see if route requires auth
+  if(to.matched.some(rec => rec.meta.requiresAuth)){
+    // check auth state of user
+    // let user = firebase.auth().currentUser
+
+    //check the autentication cookie
+    var auth = false
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        auth = c.substring(name.length, c.length);
+      }
+    }        
+
+    if(auth){
+      // user signed in, proceed to route
+      next()
+    } else {
+      // no user signed in, redirect to login
+      next({ name: 'login' })
+    }
+  } else {
+    next()
+  }
+})
+
+export default router
