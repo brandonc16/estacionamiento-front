@@ -1,0 +1,65 @@
+[33mcommit 0a60b33fc57c146464c2ca875399dfb7453c0d7c[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: diego-osunag <diego.osunag@hotmail.com>
+Date:   Fri Jul 19 19:57:49 2019 -0600
+
+    Instalé Vue-Cli y Express, cree server.js y edité el package.json para deploy en heroku
+
+[33mcommit dbb5b47c04545b153b055285190fd7e8813afde1[m
+Author: diego-osunag <diego.osunag@hotmail.com>
+Date:   Fri Jul 19 19:43:27 2019 -0600
+
+    Edité el package.json para deploy en heroku
+
+[33mcommit c5fe6e09be3a6f95e0be096dd77b303f9ba753df[m
+Author: diego-osunag <diego.osunag@hotmail.com>
+Date:   Fri Jul 19 19:28:26 2019 -0600
+
+    Quité console.log() en Login.vue
+
+[33mcommit 32104b2168790040a1874fb76896952569b3c657[m
+Author: diego-osunag <diego.osunag@hotmail.com>
+Date:   Fri Jul 19 19:19:52 2019 -0600
+
+    Edité package.json para deploy en heroku
+
+[33mcommit 65f45f8a4c7f1022af5c494253fbbaf30bc7a3f8[m
+Author: diego-osunag <diego.osunag@hotmail.com>
+Date:   Fri Jul 19 19:13:24 2019 -0600
+
+    Añadí datos de ejemplo para layout de Inicio y Estacionamientos
+
+[33mcommit 87d3d187423253de4c9440adce4936729d5c8425[m
+Author: diego-osunag <diego.osunag@hotmail.com>
+Date:   Fri Jul 19 17:19:31 2019 -0600
+
+    Añadí datos de ejemplo al layout de la vista de Usuarios
+
+[33mcommit 19260933fccc1a1d4791bafeefc2400bab83208a[m
+Author: diego-osunag <diego.osunag@hotmail.com>
+Date:   Thu Jul 18 19:24:56 2019 -0600
+
+    Añadí vistas de estacionamientos, ventas y usuarios
+
+[33mcommit e3f43bc34014a04502d7bb7aeea6b73dd1a11c61[m
+Author: diego-osunag <diego.osunag@hotmail.com>
+Date:   Thu Jul 18 00:48:26 2019 -0600
+
+    Instalé Vuetify para volver a diseñar la pantalla de login
+
+[33mcommit ee6260781b8e48d51876e4c47c1993a9ed17071d[m
+Author: diego-osunag <diosuna@redelcid.com>
+Date:   Wed Jun 5 15:52:47 2019 -0600
+
+    Redirected home to login
+
+[33mcommit bf9f48fc8c113c802abf7332ef76e2a2ea00bd26[m
+Author: diego-osunag <diosuna@redelcid.com>
+Date:   Tue Jun 4 17:21:52 2019 -0600
+
+    package.json editado
+
+[33mcommit b55db204d40398926da2697c78487bfb44329409[m
+Author: Diego O <diosuna@redelcid.com>
+Date:   Tue Jun 4 16:24:07 2019 -0600
+
+    primer commit
