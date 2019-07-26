@@ -32,7 +32,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn flat @click="logout" v-if="auth">
+      <v-btn flat @click="logout" v-if="isauth">
         <span>Cerrar Sesión</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
@@ -62,6 +62,16 @@
             <v-list-tile-title class="white--text">{{ link.text }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+
+        <v-list-tile router to="/login">
+          <v-list-tile-action>
+            <v-icon class="white--text">vpn_key</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title class="white--text">Iniciar Sesión2</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
       </v-list>
     </v-navigation-drawer>
     
@@ -72,10 +82,10 @@
 
 export default {
   components: {  },
-
+  props: ['isauth'],
   data() {
     return {
-      auth: window.$cookies.isKey("parken-auth"),
+      auth: true,
       drawer: false,
       links: [
         { icon: 'vpn_key', text: 'Iniciar Sesión', route: '/login', visibility: !this.auth },
@@ -89,31 +99,32 @@ export default {
   },
   mounted() {
     
-    this.auth = window.$cookies.isKey("parken-auth")
-    console.log("auth = " + this.auth)
+  /*  this.auth = window.$cookies.isKey("parken-auth")
+    console.log("auth = " + this.auth) */
   //  this.auth = window.$cookies.get("parken-auth")
   //  console.log("created(): auth = " + this.auth + " | type: " + typeof this.auth)
   },
   created() {
-    
+    /* console.log("Navbar created(): isAuthenticated = " + this.isAuthenticated())
+
     this.auth = window.$cookies.isKey("parken-auth")
-    console.log("auth = " + this.auth)
+    console.log("auth = " + this.auth) */
   //  this.auth = window.$cookies.get("parken-auth")
   //  console.log("created(): auth = " + this.auth + " | type: " + typeof this.auth)
   },
   updated() {
     // console.log("Navbar: updated() jumped in! | auth = " + this.auth)
     //  this.auth = this.getCookie("parken-auth")
-    this.auth = window.$cookies.isKey("parken-auth")
-    console.log("auth = " + this.auth)
+    // this.auth = window.$cookies.isKey("parken-auth")
+    // console.log("auth = " + this.auth)
     // console.log("updated(): auth = " + this.auth + " | type: " + typeof this.auth)
   }, 
   methods: {
     logout(){
-      document.cookie = "parken-auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      /* document.cookie = "parken-auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       this.auth = window.$cookies.isKey("parken-auth")
       console.log("auth = " + this.auth)
-      this.drawer = false;
+      this.drawer = false; */
       this.$router.push({ name: 'login' })
     },
     /*getCookie(cname) {

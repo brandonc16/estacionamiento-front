@@ -7,6 +7,9 @@
         <v-flex xs12 sm4>
           <v-combobox md6 v-model="selectedParking" :items="parkingsNames" label="Estacionamiento"></v-combobox>
         </v-flex>
+        <v-flex xs12 sm4>
+          <div>In Child: {{isAuthenticated}} </div>
+        </v-flex>
         <v-spacer></v-spacer>
         <v-flex xs12 sm2>
           <v-btn color="info" dark class="mb-2">
@@ -21,7 +24,7 @@
           <v-flex xs12 md2>
             <div class="caption grey--text">Matricula</div>
             <div>{{car.plate}}</div>
-          </v-flex>
+          </v-flex> 
           <v-flex xs6 sm4 md2>
             <div class="caption grey--text">Marca</div>
             <div>{{car.brand}}</div>

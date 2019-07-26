@@ -11,3 +11,10 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
+Vue.mixin({
+  data: function() {
+    return {
+      isAuthenticated : VueCookies.$cookies.isKey("parken-auth")      
+    }
+  }
+})
