@@ -75,6 +75,7 @@ export default {
 
   data() {
     return {
+      auth: window.$cookies.isKey("parken-auth"),
       drawer: false,
       links: [
         { icon: 'vpn_key', text: 'Iniciar Sesión', route: '/login', visibility: !this.auth },
@@ -83,27 +84,39 @@ export default {
         //{ icon: 'attach_money', text: 'Ventas', route: '/sales' },
         { icon: 'person', text: 'Usuarios', route: '/users', visibility: this.auth }
       ],
-      snackbar: false,
-      auth: null
+      snackbar: false    
     }
   },
-  created() {
-  //  this.auth = this.getCookie("parken-auth")
+  mounted() {
+    
+    this.auth = window.$cookies.isKey("parken-auth")
+    console.log("auth = " + this.auth)
   //  this.auth = window.$cookies.get("parken-auth")
   //  console.log("created(): auth = " + this.auth + " | type: " + typeof this.auth)
-    console.log(window.$cookies.get("parken-auth"))
+  },
+  created() {
+    
+    this.auth = window.$cookies.isKey("parken-auth")
+    console.log("auth = " + this.auth)
+  //  this.auth = window.$cookies.get("parken-auth")
+  //  console.log("created(): auth = " + this.auth + " | type: " + typeof this.auth)
   },
   updated() {
-  //  this.auth = this.getCookie("parken-auth")
-    this.auth = window.$cookies.get("parken-auth")
-    console.log("updated(): auth = " + this.auth + " | type: " + typeof this.auth)
+    // console.log("Navbar: updated() jumped in! | auth = " + this.auth)
+    //  this.auth = this.getCookie("parken-auth")
+    this.auth = window.$cookies.isKey("parken-auth")
+    console.log("auth = " + this.auth)
+    // console.log("updated(): auth = " + this.auth + " | type: " + typeof this.auth)
   }, 
   methods: {
     logout(){
       document.cookie = "parken-auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      this.auth = window.$cookies.isKey("parken-auth")
+      console.log("auth = " + this.auth)
+      this.drawer = false;
       this.$router.push({ name: 'login' })
     },
-    getCookie(cname) {
+    /*getCookie(cname) {
       var name = cname + "=";
       var decodedCookie = decodeURIComponent(document.cookie);
       var ca = decodedCookie.split(';');
@@ -118,7 +131,7 @@ export default {
         }
       }
       return "";
-    }
+    }*/
   },
   
 }

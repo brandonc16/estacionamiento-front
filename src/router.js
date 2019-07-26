@@ -1,12 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Dashboard from './views/Dashboard.vue'
 import Parkings from './views/Parkings.vue'
 import Users from './views/Users.vue'
 import Sales from './views/Sales.vue'
 import Login from './views/Login.vue'
 import Home from './views/Home.vue'
-
 
 Vue.use(Router)
 
@@ -55,26 +53,11 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  
   // check to see if route requires auth
   if(to.matched.some(rec => rec.meta.requiresAuth)){
-    // check auth state of user
-    // let user = firebase.auth().currentUser
-
     //check the autentication cookie
-    var auth = false
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        auth = c.substring(name.length, c.length);
-      }
-    }        
-
+    let auth = window.$cookies.isKey("parken-auth")
+    
     if(auth){
       // user signed in, proceed to route
       next()
