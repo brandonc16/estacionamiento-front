@@ -6,36 +6,26 @@
       <v-btn flat color="white" @click="snackbar = false">Close</v-btn>
     </v-snackbar>
 
-    <v-toolbar flat dark app color="primary" clipped-left>
-      <v-toolbar-side-icon @click="drawer = !drawer" v-if="auth"></v-toolbar-side-icon>
-      
-      <v-toolbar-title class="text-uppercase">
+    <v-toolbar  dark app color="primary" clipped-left>            
+      <v-toolbar-title>
         <router-link :to="{name: 'home'}">
           <img class="logo" alt="Parken" src="../assets/logo_white.png"> 
         </router-link>
-             
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-menu offset-y v-if="auth">
-        <v-btn flat slot="activator">
-          <v-icon left>expand_more</v-icon>
-          <span>Menú</span>
+      <v-toolbar-items color="primary">
+        <v-btn flat text router to="/">Inicio</v-btn>
+        <v-btn flat text router to="/parkings">Estacionamientos</v-btn>
+        <v-btn flat text router to="/users">Usuarios</v-btn>
+        <v-btn flat text router to="/login" v-if="!auth">Iniciar Sesión</v-btn>
+        <v-btn flat text @click="logout" v-if="auth">
+          <span>Cerrar Sesión</span>
+          <v-icon right>exit_to_app</v-icon>
         </v-btn>
-        <v-list>
-          <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
-            <v-list-tile-title>
-              {{ link.text }}
-            </v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
-
-      <v-btn flat @click="logout" v-if="auth">
-        <span>Cerrar Sesión</span>
-        <v-icon right>exit_to_app</v-icon>
-      </v-btn>
+      </v-toolbar-items>
+      <v-toolbar-side-icon @click="drawer = !drawer" v-if="!desktop"></v-toolbar-side-icon>
     </v-toolbar>
     
     <!-- <v-navigation-drawer clipped fixed open fixed v-model="drawer" app dark>  -->
@@ -75,7 +65,9 @@ export default {
 
   data() {
     return {
-      auth: window.$cookies.isKey("parken-auth"),
+      auth: true,
+      desktop: true,
+      // auth: window.$cookies.isKey("parken-auth"),
       drawer: false,
       links: [
         { icon: 'vpn_key', text: 'Iniciar Sesión', route: '/login', visibility: !this.auth },
@@ -89,31 +81,31 @@ export default {
   },
   mounted() {
     
-    this.auth = window.$cookies.isKey("parken-auth")
-    console.log("auth = " + this.auth)
+  //  this.auth = window.$cookies.isKey("parken-auth")
+  //  console.log("auth = " + this.auth)
   //  this.auth = window.$cookies.get("parken-auth")
   //  console.log("created(): auth = " + this.auth + " | type: " + typeof this.auth)
   },
   created() {
     
-    this.auth = window.$cookies.isKey("parken-auth")
-    console.log("auth = " + this.auth)
+  //  this.auth = window.$cookies.isKey("parken-auth")
+  //  console.log("auth = " + this.auth)
   //  this.auth = window.$cookies.get("parken-auth")
   //  console.log("created(): auth = " + this.auth + " | type: " + typeof this.auth)
   },
   updated() {
     // console.log("Navbar: updated() jumped in! | auth = " + this.auth)
     //  this.auth = this.getCookie("parken-auth")
-    this.auth = window.$cookies.isKey("parken-auth")
-    console.log("auth = " + this.auth)
+  //  this.auth = window.$cookies.isKey("parken-auth")
+  //  console.log("auth = " + this.auth)
     // console.log("updated(): auth = " + this.auth + " | type: " + typeof this.auth)
   }, 
   methods: {
     logout(){
-      document.cookie = "parken-auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    /*  document.cookie = "parken-auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       this.auth = window.$cookies.isKey("parken-auth")
       console.log("auth = " + this.auth)
-      this.drawer = false;
+      this.drawer = false; */
       this.$router.push({ name: 'login' })
     },
     /*getCookie(cname) {
@@ -138,6 +130,14 @@ export default {
 </script>
 
 <style>
-.logo { max-height: 40px;}
+.logo { 
+  max-height: 40px;
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);  
+}
+.logo:hover {
+  -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+     filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
+  /*opacity: 0.8;*/
+}
 </style>
 

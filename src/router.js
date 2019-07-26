@@ -56,7 +56,8 @@ router.beforeEach((to, from, next) => {
   // check to see if route requires auth
   if(to.matched.some(rec => rec.meta.requiresAuth)){
     //check the autentication cookie
-    let auth = window.$cookies.isKey("parken-auth")
+    // let auth = window.$cookies.isKey("parken-auth")
+    let auth = true;
     
     if(auth){
       // user signed in, proceed to route
