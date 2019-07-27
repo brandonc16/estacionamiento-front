@@ -9,7 +9,7 @@
         </v-flex>
         <v-spacer></v-spacer>
         <v-flex xs12 sm2>
-          <v-btn color="info" dark class="mb-2" v-on="on">
+          <v-btn color="info" dark class="mb-2">
             <v-icon left>directions_car</v-icon>
             <span>Ingresar Auto</span>
           </v-btn>
@@ -65,7 +65,6 @@
     data() {
       return {
         // projects: []
-
         parkings: [
           { name: 'La Central', description: 'Lorem Ipsum, dolor amet', slots: '40', city: 'Mazatlán' },
           { name: 'Olas Altas', description: 'Lorem Ipsum, dolor amet', slots: '30', city: 'Mazatlán' },
@@ -92,7 +91,6 @@
       }
     },
     created() {
-      
       /* db.collection('projects').onSnapshot(res => {
         const changes = res.docChanges();
 

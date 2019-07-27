@@ -32,6 +32,8 @@
 </template>
 
 <script>
+// import VueCookies from 'vue-cookies'
+
 export default {
   name: 'Login',
   data(){
@@ -51,21 +53,20 @@ export default {
   },
   methods: {
     login(){
+      console.log("login()")
       if(this.userName && this.password) {        
         this.users.forEach((user) => {
-          if(((this.userName == user.email) || (this.userName == user.userName)) && (this.password == user.password)){
-            this.auth = "true"
+          if(((this.userName == user.email) || 
+            (this.userName == user.userName)) && 
+            (this.password == user.password)) {
+              
+              window.$cookies.set("parken-auth", true, "Tue, 31 Dec 2019 23:59:00 UTC", "/")
+              console.log("$cookies.set success!")
+              this.$router.push({ name: 'home' })
+          }else{
+            this.feedback = 'Usuario y/o contraseña incorrectos'
           }
-        })         
-
-        if(this.auth){
-          this.userName = null
-          this.password = null
-          this.feedback = null
-          this.$router.push({ name: 'dashboard' })
-        } else {
-          this.feedback = 'Usuario y/o contraseña incorrectos'
-        }        
+        })                       
       } else {
         this.feedback = 'Favor de llenar ambos campos'
       }

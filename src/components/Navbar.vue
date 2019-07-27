@@ -7,10 +7,10 @@
     </v-snackbar>
 
     <v-toolbar flat dark app color="primary" clipped-left>
-      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click="drawer = !drawer" v-if="auth"></v-toolbar-side-icon>
       
       <v-toolbar-title class="text-uppercase">
-        <router-link :to="{name: 'dashboard'}">
+        <router-link :to="{name: 'home'}">
           <img class="logo" alt="Parken" src="../assets/logo_white.png"> 
         </router-link>
              
@@ -18,7 +18,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-menu offset-y>
+      <v-menu offset-y v-if="auth">
         <v-btn flat slot="activator">
           <v-icon left>expand_more</v-icon>
           <span>Menú</span>
@@ -32,7 +32,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn flat>
+      <v-btn flat @click="logout" v-if="auth">
         <span>Cerrar Sesión</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
@@ -69,25 +69,58 @@
 </template>
 
 <script>
-import Login from '@/views/Login'
 
 export default {
   components: {  },
-  
+
   data() {
     return {
       drawer: false,
       links: [
-        { icon: 'vpn_key', text: 'Iniciar Sesión', route: '/login' },
-        { icon: 'dashboard', text: 'Inicio', route: '/' },
-        { icon: 'directions_car', text: 'Estacionamientos', route: '/parkings' },
+        { icon: 'vpn_key', text: 'Iniciar Sesión', route: '/login', visibility: !this.auth },
+        { icon: 'dashboard', text: 'Inicio', route: '/', visibility: this.auth },
+        { icon: 'directions_car', text: 'Estacionamientos', route: '/parkings', visibility: this.auth },
         //{ icon: 'attach_money', text: 'Ventas', route: '/sales' },
-        { icon: 'person', text: 'Usuarios', route: '/users' }
+        { icon: 'person', text: 'Usuarios', route: '/users', visibility: this.auth }
       ],
       snackbar: false,
-      auth: Login.auth
+      auth: null
     }
-  }
+  },
+  created() {
+  //  this.auth = this.getCookie("parken-auth")
+  //  this.auth = window.$cookies.get("parken-auth")
+  //  console.log("created(): auth = " + this.auth + " | type: " + typeof this.auth)
+    console.log(window.$cookies.get("parken-auth"))
+  },
+  updated() {
+  //  this.auth = this.getCookie("parken-auth")
+    this.auth = window.$cookies.get("parken-auth")
+    console.log("updated(): auth = " + this.auth + " | type: " + typeof this.auth)
+  }, 
+  methods: {
+    logout(){
+      document.cookie = "parken-auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      this.$router.push({ name: 'login' })
+    },
+    getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          console.log(c.substring(name.length, c.length))
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+  },
+  
 }
 </script>
 
