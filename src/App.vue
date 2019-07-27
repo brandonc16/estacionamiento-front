@@ -21,6 +21,9 @@ export default {
     return {
       //
     }
+  },
+   updated() {
+    console.log("App.vue has been updated!")
   }
 }
 </script>
