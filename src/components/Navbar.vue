@@ -19,7 +19,7 @@
         <v-btn flat text router to="/">Inicio</v-btn>
         <v-btn flat text router to="/parkings">Estacionamientos</v-btn>
         <v-btn flat text router to="/users">Usuarios</v-btn>
-        <v-btn flat text router to="/login" v-if="!auth">Iniciar Sesión</v-btn>
+        <v-btn flat text router to="/login" v-if="auth">Iniciar Sesión</v-btn>
         <v-btn flat text @click="logout" v-if="auth">
           <span>Cerrar Sesión</span>
           <v-icon right>exit_to_app</v-icon>
@@ -134,10 +134,14 @@ export default {
   max-height: 40px;
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);  
 }
-.logo:hover {
-  -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
-     filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
-  /*opacity: 0.8;*/
+
+.logo:hover {/*
+  -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 229, 209, 0.5));
+  filter: drop-shadow(0px 0px 5px rgba(255, 229, 209, 0.5));
+  opacity: 0.8; */
+  transform: scale(1.05,1.05);
+  margin: 3px 3px;
 }
+
 </style>
 

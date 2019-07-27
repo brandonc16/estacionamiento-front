@@ -8,12 +8,14 @@
           <v-combobox md6 v-model="selectedParking" :items="parkingsNames" label="Estacionamiento"></v-combobox>
         </v-flex>
         <v-spacer></v-spacer>
+        <!-- Botón para ingresar autos al estacionamiento
         <v-flex xs12 sm2>
           <v-btn color="info" dark class="mb-2">
             <v-icon left>directions_car</v-icon>
             <span>Ingresar Auto</span>
           </v-btn>
         </v-flex>
+        -->
       </v-layout>
 
       <v-card flat class="" v-for="car in cars" :key="car.id">
