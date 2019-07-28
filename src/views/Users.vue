@@ -1,5 +1,5 @@
 <template>
-  <div class="users">
+  <div class="users page">
     <v-container flat class="my-5">
       <v-toolbar flat >
         <v-toolbar-title>

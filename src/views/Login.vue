@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login page">
     <div class="bg_overlay">
     </div>
     <v-container class="my-5">

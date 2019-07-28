@@ -2,8 +2,8 @@
   <v-app class="grey lighten-4">
     <Navbar/>
       <v-content>
-          <transition name="fade" mode="out-in">
-          <router-view></router-view>
+          <transition name="router-anim" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+            <router-view></router-view>
           </transition>
       </v-content>
   </v-app>
@@ -29,4 +29,13 @@ export default {
 </script>
 
 <style>
+  @import "https://cdn.jsdelivr.net/npm/animate.css";
+
+  .page{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 </style>

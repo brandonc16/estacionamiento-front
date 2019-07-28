@@ -1,5 +1,5 @@
 <template>
-  <div class="parkings">
+  <div class="parkings page">
     <v-container class="my-5">
       <v-data-table :headers="headers" :items="parkings" class="elevation-1">
         <template v-slot:items="props">
