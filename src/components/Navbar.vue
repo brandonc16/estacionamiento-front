@@ -28,8 +28,7 @@
       <v-toolbar-side-icon @click="drawer = !drawer" v-if="!desktop"></v-toolbar-side-icon>
     </v-toolbar>
     
-    <!-- <v-navigation-drawer clipped fixed open fixed v-model="drawer" app dark>  -->
-    <v-navigation-drawer clipped fixed open app dark v-model="drawer">
+    <!-- <v-navigation-drawer  app dark v-model="drawer">
       <v-layout column align-center>
         <v-flex class="mt-4">
           <v-avatar size="80">
@@ -53,7 +52,7 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
     
   </nav>
 </template>

@@ -2,9 +2,9 @@
   <div class="login page">
     <div class="bg_overlay">
     </div>
-    <v-container class="my-5">
+    <v-container class="my-2">
       <v-layout align-center class="justify-center">
-        <v-flex xs12 sm8 md3>
+        <v-flex xs12 sm8 lg5 >
           <v-card class="pa-4" elevation="5">
             <v-card-text class="justify-center">
               <p class="text-xs-center"><v-icon x-large class="avatar" color="grey lighten-1">account_circle</v-icon></p>
